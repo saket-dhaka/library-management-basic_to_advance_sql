@@ -79,9 +79,9 @@ CREATE TABLE issued_status(
 
 
 
--- now i am going to do data modeling . this tells the relation between the data base and it 
--- uses foreign key for this purpose. for making the column foreign it should primary key in 
--- other table. 
+/*now i am going to do data modeling . this tells the relation between the data base and it 
+ uses foreign key for this purpose. for making the column foreign it should primary key in 
+other table. */
 
 --now look
 
@@ -158,13 +158,13 @@ group by 1
 having count(*)>1
 
 
--- CRUD Operations create,read,update,delete . these were the operations what we did now 
--- now going to do the further questions.
+/* CRUD Operations create,read,update,delete . these were the operations what we did now 
+now going to do the further questions.*/
 
 
--- CTAS (Create Table As Select) . this the next question
---Task 6: Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt*
---task 6:Create a new table using a SELECT query that shows each book and the total number of times it has been issued.
+/* CTAS (Create Table As Select) . this the next question
+Task 6: Create Summary Tables: Used CTAS to generate new tables based on query results - each book and total book_issued_cnt*
+task 6:Create a new table using a SELECT query that shows each book and the total number of times it has been issued.*/
 
 create table for_question as
 select b.isbn,b.book_title,count(ist.issued_id)as issu_count
@@ -174,12 +174,12 @@ on ist.issued_book_isbn=b.isbn
 group by b.isbn,b.book_title;
 
 
--- here what i did is that i first created the table book as now i have to show book and number of times 
--- it has been issued . so first of all 2 tables will be used in this books and issued_status .
--- now i have to join these 2 tables . but can only join on some matching column . in this case is isbn 
--- this is present in both the tables. so in the 2nd line i have selected isbn,book title and also the 
---count of number for that book and issued_id for count from issued_status table . 
---now just joining them ussing the similar isbn and then after just grouping them 
+/* here what i did is that i first created the table book as now i have to show book and number of times 
+ it has been issued . so first of all 2 tables will be used in this books and issued_status .
+ now i have to join these 2 tables . but can only join on some matching column . in this case is isbn 
+ this is present in both the tables. so in the 2nd line i have selected isbn,book title and also the 
+count of number for that book and issued_id for count from issued_status table . 
+now just joining them ussing the similar isbn and then after just grouping them */
 
  select* from for_question;
 
@@ -295,7 +295,7 @@ date from the current date to get the solution*/
 
 
 
-/*Task 15: Branch Performance Report
+/*Task 14: Branch Performance Report
 Create a query that generates a performance report for each branch, showing the number of
 books issued, the number of books returned, and the total revenue generated from book rentals.*/
 
@@ -335,7 +335,7 @@ group by 1
 select * from task_15
 
 
-/*Task 16: CTAS: Create a Table of Active Members
+/*Task 15: CTAS: Create a Table of Active Members
 Use the CREATE TABLE AS (CTAS) statement to create a new table active_members containing
 members who have issued at least one book in the last 6 months.
 
@@ -347,7 +347,7 @@ from issued_status
 where issued_date>= current_date - interval'10 days'
 
 
-/*Task 17: Find Employees with the Most Book Issues Processed
+/*Task 16: Find Employees with the Most Book Issues Processed
 Write a query to find the top 3 employees who have processed the most book issues.
 Display the employee name, number of books processed, and their branch. */
 
